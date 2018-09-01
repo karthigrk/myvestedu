@@ -1,0 +1,6 @@
+a, button {
+  text-transform: uppercase;
+}
+button {
+  border-radius: 5px;
+}
