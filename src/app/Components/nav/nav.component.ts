@@ -18,8 +18,8 @@ export class NavComponent implements OnInit {
   ngOnInit() {
     let menuObj = this.navItems.getMenus().subscribe(data => {
       if(data) {
-        console.log("ddd ", data.menus)
-        this.menuItems = data.menus;
+        console.log("ddd ", data["menus"])
+        this.menuItems = data["menus"];
       }
     });
     console.log("menu items ---", this.menuItems)
