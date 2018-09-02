@@ -1,23 +1,34 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule, Routes } from '@angular/router';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 
+
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { NavComponent } from './nav/nav.component';
-import { CarouselComponent } from './carousel/carousel.component';
-import { PromoComponent } from './promo/promo.component';
-import { CalloutComponent } from './callout/callout.component';
-import { EventblockComponent } from './eventblock/eventblock.component';
-import { CounterComponent } from './counter/counter.component';
-import { BlogsComponent } from './blogs/blogs.component';
-import { TestimonyComponent } from './testimony/testimony.component';
-import { FooterComponent } from './footer/footer.component';
+import { HomeComponent } from './Pages/home/home.component';
+import { AboutComponent } from './Pages/about/about.component';
+import { NavComponent } from './Components/nav/nav.component';
+import { CarouselComponent } from './Components/carousel/carousel.component';
+import { PromoComponent } from './Components/promo/promo.component';
+import { CalloutComponent } from './Components/callout/callout.component';
+import { EventblockComponent } from './Components/eventblock/eventblock.component';
+import { CounterComponent } from './Components/counter/counter.component';
+import { BlogsComponent } from './Components/blogs/blogs.component';
+import { TestimonyComponent } from './Components/testimony/testimony.component';
+import { FooterComponent } from './Components/footer/footer.component';
+
+import { NavigationService } from './Services/navigation.service';
+
+const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'about', component: AboutComponent }
+ ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
+    HomeComponent, AboutComponent,
     NavComponent,
     CarouselComponent,
     PromoComponent,
@@ -30,9 +41,11 @@ import { FooterComponent } from './footer/footer.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
+    RouterModule.forRoot(routes, {useHash: true}),
     CarouselModule.forRoot()
   ],
-  providers: [],
+  providers: [ NavigationService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
